@@ -1,4 +1,13 @@
 services:
-  - docker
+- docker
 script:
-  - docker build -t 7diracseas/jupyter .
+- docker build -t 7diracseas/jupyter .
+deploy:
+  provider: script
+  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD -e geoffrey@zombie.guru && docker push 7diracseas/jupyter:latest
+  on:
+    branch: master
+env:
+  global:
+  - secure: mCMWoVa4MdHcsqMcDmwBeHBlSvfT9V5czxIyq35jJhOGbhKx5fOgw/uXa/xenehPsj/2tmvNuklvzwj+OutA7nBFu+7xS4kC50xMC+bIlwmbZIolQvJlZok3ew9cTAVuyr99CmzR98b0ozc8pBdZ/fSHzn7Gnm+s5vRrVtmox2typM5ql/eZgMVrIxBYrrkaouokvpP/7JdODH9CI+qRQ0L9BIhXa1uKYXF4AQaWJ8zxOAcllh7TvXwxB1xhRJrpUTyOa1UeJX8+8OUNsXphScLk6BCLHkK1HKttzP0+sDQEh4yJhZCXfw5+7cPijz3FUcS+gJwycvHfA/d5f73IjeqTlEUjCTHhA/9JXCdisu6fD+yOdFn6VSBZWCCnS1vhlIX/OWwzNeZuHJ1CEW5oZR1UYumy3CkN4x4UEzB1HUU1HcTpNjGLi4X2xxtOgrRUJxHFNzErUJbgaL9ZRw0c2J0sDUDfH9t6nygZBU+36JNPbonsZYDnPsGlfBROXPyv+7nbGezyoe002sNtvq20sFqrn5oos2RXmWE/0xeFb1YuR0Hy/QsshW0dQDUe0SkK1YxH58P09MdAdQq7PWx7OhNVk5OdK777GYAS09B/Om+cIH9ci0iVA0IJwFILAxDBUkUyEEm2H5XPPIVwzh0eefATF5adUnjUZ6yV1mVbiUo=
+  - secure: j+j77L/Q+SH7xn9cgUxTYHApbwx9Cb2uWb1wCSS8MDF3zh8ROcl9QKuLQJMor25v/Ra78sOTTfpj49zUZt/whWCIO15lEGicPSrvY8l3d/BouXZCpeBHbQIK9c9TqrVJOktzYOe+qea99Ntn3UHSWsY5fU/HEQ38QKRP4WgSHlwcIFgMMJNCd1b29f9gLMxZov+n+w9Dh2XlL5R36SE3POxcSBU8X7kP2MyFof2/AEjuH+kdvJQAeh2CNR959oGo7FCAwQS+Nrl1+2FbRKrSns8yKXPO+nB8QH0JXgxR3eRGt8e7r/Qv358bB2XDwV9shNOYBLWYWlrPQy0WnVynK9vRoLyI0bMy+iHTwrKy/jR+WLrB0sIwTTUEVI4oHZouxYmenRqIqrc2csQKfMkiyOUW2NX4Q6P+7BrMz+vAvbtwkDT51lTjjsG01kDN7ErzD9cGRA5fpcmi4LWWFLtCoVuYPIiHg+duGXg2w32kUzcHA/BMJSw4OX63FmX+ItccbSxt4crZ8mGSuKEgRrlOG/tsIcxRjwDpn0xbLkvcKgm7CGU5hEQwOPQofFmdLjJG4tjT79o/01KJOKrgzso3eX+fqH+XYxEonY3kh2h1NWE5aS15n88z6SxzqAPds3vVnVXIRSbElYBgWVjbLwCaUo4iGfsPEFiUFoMC5QwvE9g=
